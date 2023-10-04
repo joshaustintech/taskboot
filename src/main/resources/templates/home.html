@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home page</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    <div th:each="currentProject : ${fullProjectList}" >
+        <h2 th:text="${currentProject.getKey().title()}"></h2>
+        <ul>
+            <li th:each="currentTask : ${currentProject.getValue()}">
+                <p th:text="${currentTask.title()}">
+                </p>
+                <p th:if="${currentTask.description() != null}">
+                    <em th:text="${currentTask.description()}"></em>
+                </p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
